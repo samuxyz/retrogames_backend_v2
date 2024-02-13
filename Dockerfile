@@ -7,11 +7,14 @@ ENV PYTHONUNBUFFERED 1
 ENV PYTHONPATH /home/app
 ENV POETRY_HOME="/opt/poetry"
 # Set venv to false as the container is already isolated, no need for it
-ENV POETRY_VIRTUALENVS_CREATE=false
+#ENV POETRY_VIRTUALENVS_CREATE=false
 ENV PATH="/opt/poetry/bin:$PATH"
+ENV PATH="/venv/bin:$PATH"
  
 WORKDIR /home/app  
-COPY ./pyproject.toml ./poetry.lock* ./  
+COPY ./pyproject.toml ./poetry.lock* ./ 
+
+RUN python -m venv /venv
   
 # Install Poetry through Curl instead of using pip
 
