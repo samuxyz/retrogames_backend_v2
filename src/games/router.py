@@ -10,8 +10,8 @@ router = APIRouter(
     tags=["games"]
 )
 
-@router.get("/", response_model = list[Game])
-async def getGames(db: AsyncSession = Depends(get_session)) -> list[Game]:
+@router.get("/", response_model = list[GameCreate])
+async def getGames(db: AsyncSession = Depends(get_session)):
     result = await db.exec(select(Game))
     games = result.all()
     return games

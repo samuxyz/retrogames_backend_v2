@@ -20,3 +20,13 @@ class TimestampModel(SQLModel):
         nullable=False,  
         sa_column_kwargs={"server_default": text("current_timestamp(0)")},  
     )
+
+
+class GamePlatformLink(SQLModel, table=True):
+    __tablename__= "gamesplatforms"
+    game_id: UUID =  Field(
+        default=None, foreign_key="games.id", primary_key=True
+    )
+    platform_id: UUID = Field(
+        default=None, foreign_key="platforms.id", primary_key=True
+    )

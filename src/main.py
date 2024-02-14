@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from .games.router import router as games_router
 from core.config import settings
 from src.games.models import Game
+from src.platforms.models import Platform
 
 app = FastAPI(
     title=settings.title,
